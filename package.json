@@ -5,10 +5,12 @@
   "scripts": {
     "build": "pnpm clean && tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
+    "clean:src-js": "powershell -Command \"Get-ChildItem -Path src -Recurse -Name '*.js' -File | ForEach-Object { Remove-Item -Path (Join-Path 'src' $_) -Force }\"",
     "lint": "eslint ./src/ --fix",
     "semantic-release": "semantic-release",
     "test:watch": "jest --watch",
-    "test": "jest --coverage",
+    "test": "pnpm run clean:src-js && jest --coverage",
+    "test:clean": "pnpm run clean:src-js && jest --coverage",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "build:tsc-watch": "tsc --project tsconfig.build.json --watch",

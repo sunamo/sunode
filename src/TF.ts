@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import { dirname } from "path";
 import { ElectronLoggerNode } from "./types/ElectronLoggerNode";
 
@@ -11,9 +11,10 @@ export async function writeAllLines(
   try {
     // Ensure the directory exists
     const dir = dirname(filePath);
-    await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(filePath, lines.join("\n"), "utf8");
+    await mkdir(dir, { recursive: true });
+    await writeFile(filePath, lines.join("\n"), "utf8");
   } catch (err) {
     error(`Error writing to file: ${filePath}`, err);
+    throw err;
   }
 }

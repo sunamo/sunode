@@ -13,6 +13,11 @@
 lib
 coverage
 
+# Ignore compiled JavaScript files in src/ directory
+src/**/*.js
+src/**/*.js.map
+src/**/*.d.ts
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
