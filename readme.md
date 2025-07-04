@@ -1,6 +1,6 @@
 # sunodejs
 
-[![CI/CD](https://img.shields.io/badge/CI%2FCD-pending-yellow)](https://github.com/actions) [![Tests](https://img.shields.io/badge/tests-pending-yellow)](...) [![Coverage](https://img.shields.io/badge/coverage-0%25-red)](...) [![NPM Version](https://img.shields.io/npm/v/sunodejs.svg)](https://www.npmjs.com/package/sunodejs) [![License](https://img.shields.io/npm/l/sunodejs.svg)](./LICENSE)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-pending-yellow)](https://github.com/actions) [![Tests](https://img.shields.io/badge/tests-pending-yellow)](...) [![Coverage](https://img.shields.io/badge/coverage-45%25-orange)](...) [![NPM Version](https://img.shields.io/npm/v/sunodejs.svg)](https://www.npmjs.com/package/sunodejs) [![License](https://img.shields.io/npm/l/sunodejs.svg)](./LICENSE)
 
 I need a standalone project that allows me to use Node modules:
 
