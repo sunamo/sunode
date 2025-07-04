@@ -11,6 +11,7 @@
 *.sln.docstate
 
 lib
+coverage
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

@@ -1,0 +1,40 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running tests and updating coverage badge..."
+
+# Run tests and capture output, redirecting stderr to stdout
+output=$(pnpm test 2>&1)
+
+# Extract the total statements coverage percentage from the summary table.
+coverage=$(echo "$output" | grep 'All files' | awk '{print $3}')
+
+if [ -z "$coverage" ]; then
+    echo "Could not determine coverage from test output."
+    echo "Test output:"
+    echo "$output"
+    exit 1 # Prevent commit
+fi
+
+# Round to an integer
+coverage_int=$(printf "%.0f" "$coverage")
+
+echo "Coverage is $coverage_int%"
+
+# Determine color based on coverage
+color="red"
+if [ "$coverage_int" -ge 80 ]; then
+    color="green"
+elif [ "$coverage_int" -ge 50 ]; then
+    color="yellow"
+fi
+
+# Update README.md using PowerShell
+powershell -Command "(Get-Content -path readme.md -Raw) -replace 'coverage-[0-9]+%25-(red|yellow|green)', 'coverage-$coverage_int%25-$color' | Set-Content -path readme.md"
+
+# Add the updated readme.md to the commit
+git add readme.md
+
+echo "Coverage badge updated."
+
+exit 0
