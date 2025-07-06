@@ -17,10 +17,7 @@
   "structure": "flat",
   "noHeader": true,
   "exportDefault": false,
-  "includeDefaultExport": false,
-  "noDefaultExports": true,
   "singleQuotes": true,
-  "quote": "'",
-  "local": true,
-  "exportTemplate": "export * from '{{path}}'"
+  "noSemicolon": false,
+  "mode": "modules"
 }

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 function generateBarrels() {
-  const srcDir = path.join(__dirname, "../src");
+  const srcDir = path.join(__dirname, "src");
   const indexFile = path.join(srcDir, "index.ts");
 
   // Get all .ts files in src directory (excluding test files and index.ts)

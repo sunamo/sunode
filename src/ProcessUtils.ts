@@ -1,10 +1,5 @@
-import {
-  exec,
-  ExecException,
-  spawn,
-  SpawnOptionsWithoutStdio,
-} from "child_process";
-import { ElectronLoggerNode } from "./types/ElectronLoggerNode";
+import { exec, ExecException, spawn, SpawnOptionsWithoutStdio } from 'child_process';
+import { ElectronLoggerNode } from './types/ElectronLoggerNode';
 
 //import { error } from "electron-log";
 
@@ -16,9 +11,7 @@ export type executeCommandInCmdProps = {
   log: ElectronLoggerNode;
 };
 
-export function executeCommandInCmd(
-  props: executeCommandInCmdProps
-): Promise<string> {
+export function executeCommandInCmd(props: executeCommandInCmdProps): Promise<string> {
   const { error } = props.log;
   const { command } = props;
   let { args, options } = props;
@@ -37,33 +30,32 @@ export function executeCommandInCmd(
 
     const process = spawn(command, args, mergedOptions);
 
-    let stdoutData = "";
-    let stderrData = "";
+    let stdoutData = '';
 
-    process.stdout.on("data", (data) => {
+    process.stdout.on('data', (data) => {
       stdoutData += data;
     });
 
-    process.stderr.on("data", (data) => {
-      stderrData += data;
+    process.stderr.on('data', (data) => {
+      // Stderr data is received but not used in current implementation
       ////console.log(
       //   `tato chyba by se měla objevit i v logu: stderr: ${data} in folder ${props.options?.cwd}`
       // );
       error(`stderr: ${data} in folder ${props.options?.cwd}`); // Log errors to console
     });
 
-    process.on("close", (code) => {
+    process.on('close', (code) => {
       if (code === 0) {
         resolve(stdoutData); // Resolve with stdout on success
       } else {
         // git status mě vracel pro adresáře kde není git code 128
         // ani nic do konzole to nevypsalo
-        resolve("Something went wrong");
+        resolve('Something went wrong');
         //reject(new Error(`Command failed with code ${code}\n${stderrData}`)); // Reject with stderr and code on failure
       }
     });
 
-    process.on("error", (err) => {
+    process.on('error', (err) => {
       reject(err);
     });
   });
@@ -90,17 +82,15 @@ stderr - vše co příkaz vypsal na std. chybový výstup
 !!! NEMAZAT !!!
 */
 
-  const result = new Promise<string | ExecException | null>(
-    (resolve, reject) => {
-      exec(command, options, (error, stdout, stderr) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-        resolve(stdout);
-      });
-    }
-  );
+  const result = new Promise<string | ExecException | null>((resolve, reject) => {
+    exec(command, options, (error, stdout, _stderr) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(stdout);
+    });
+  });
   return result;
 }
 
@@ -112,7 +102,7 @@ export async function executeCommandInCmdAsync({
   command,
 }: executeCommandInCmdAsyncProps): Promise<string> {
   const result = new Promise<string>((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
+    exec(command, (error, stdout, _stderr) => {
       if (error) {
         reject(error);
         return;
