@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit",
     "build": "pnpm clean && tsc --project tsconfig.build.json",
     "build:tsc-watch": "tsc --project tsconfig.build.json --watch",
-    "build:watch": "npm-run-all -p build:tsc-watch barrels",
+    "build:watch": "npm-run-all -p build:tsc-watch barrels:watch                                   ",
     "Tests: ": "",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
