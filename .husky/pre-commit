@@ -1,2 +1,6 @@
+pnpm barrels
 pnpm run build
+jest --coverage --coverageReporters="json-summary"
+node ./.scripts/update-coverage-badge.js
+git add README.md
 pnpm lint-staged

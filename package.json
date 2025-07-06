@@ -26,12 +26,7 @@
     "barrels:watch": "nodemon --ignore 'src/index.ts' --watch src --ext ts --exec \"npm run barrels\""
   },
   "lint-staged": {
-    "*": [
-      "pnpm barrels",
-      "jest --coverage --coverageReporters=\"json-summary\"",
-      "node ./.scripts/update-coverage-badge.js",
-      "git add README.md"
-    ]
+    "*": []
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
