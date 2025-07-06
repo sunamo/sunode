@@ -24,7 +24,12 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.ts": "pnpm barrels"
+    "src/**/*.{ts,tsx}": [
+      "pnpm barrels",
+      "pnpm run test:coverage:staged",
+      "node ./.scripts/update-coverage-badge.js",
+      "git add README.md"
+    ]
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
