@@ -27,7 +27,7 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "pnpm barrels",
-      "pnpm run test:coverage:staged",
+      "jest --coverage --coverageReporters=\"json-summary\"",
       "node ./.scripts/update-coverage-badge.js",
       "git add README.md"
     ]
