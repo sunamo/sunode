@@ -1,0 +1,26 @@
+{
+  "directory": "./src",
+  "exclude": [
+    "__tests__",
+    ".*\\.test\\.ts$",
+    ".*\\.test\\.tsx$",
+    ".*\\.spec\\.ts$",
+    ".*\\.spec\\.tsx$",
+    "setupTests.ts",
+    "index.ts",
+    ".*\\.js$",
+    ".*\\.d\\.ts$",
+    ".*\\.js\\.map$"
+  ],
+  "delete": true,
+  "location": "top",
+  "structure": "flat",
+  "noHeader": true,
+  "exportDefault": false,
+  "includeDefaultExport": false,
+  "noDefaultExports": true,
+  "singleQuotes": true,
+  "quote": "'",
+  "local": true,
+  "exportTemplate": "export * from '{{path}}'"
+}

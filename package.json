@@ -2,7 +2,20 @@
   "name": "sunodejs",
   "version": "1.0.0",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
+    "barrels": "node ./.scripts/generate-barrels.js",
+    "release": "semantic-release",
+    "barrels:watch": "barrelsby --config .barrelsby.json --no-default-export --watch",
+    "barrels:generate": "barrelsby --config .barrelsby.json --no-default-export --delete",
     "build": "pnpm clean && tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "clean:src-js": "powershell -Command \"Get-ChildItem -Path src -Recurse -Name '*.js' -File | ForEach-Object { Remove-Item -Path (Join-Path 'src' $_) -Force }\"",
@@ -24,6 +37,10 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/jest": "^30.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22",
@@ -44,10 +61,32 @@
     "ts-node": "^10.2.1",
     "typescript": "^5"
   },
-  "keywords": [],
-  "author": "",
+  "description": "Node.js utilities for file system operations, process management, and Electron apps. Includes TypeScript support with functions for file operations, directory management, and cross-platform compatibility.",
+  "keywords": [
+    "nodejs",
+    "filesystem",
+    "file-operations",
+    "electron",
+    "typescript",
+    "utilities",
+    "cross-platform",
+    "directory-management",
+    "process-utils",
+    "fs-promises"
+  ],
+  "author": "sunamo",
   "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunamo/sunodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunamo/sunodejs/issues"
+  },
+  "homepage": "https://github.com/sunamo/sunodejs#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "jsdom": "^26.1.0",
     "nodemon": "^3.1.10",
