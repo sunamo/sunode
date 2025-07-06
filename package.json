@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "clear || cls && pnpm clean && tsc --project tsconfig.build.json",
+    "build": "pnpm clean && tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "release": "echo 'Before must be git state clean - without changes' && semantic-release && pnpm build && npm publish",

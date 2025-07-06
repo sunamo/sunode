@@ -1,3 +1,3 @@
-export enum EnumToDelete {
+export enum EnumToDelete3 {
   a,
 }
