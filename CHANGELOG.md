@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/sunamo/sunodejs/compare/v1.0.1...v1.0.2) (2025-07-06)
+
+
+### Bug Fixes
+
+* clean up package.json scripts ([28bd85b](https://github.com/sunamo/sunodejs/commit/28bd85bd32b0c7364ffd077065ab8c7a78f4ddc3))
+* update lint-staged ([c20461b](https://github.com/sunamo/sunodejs/commit/c20461bc9629dc0bc7241b582563d009edcf9be6))
+
 ## [1.0.1](https://github.com/sunamo/sunodejs/compare/v1.0.0...v1.0.1) (2025-07-06)
 
 
