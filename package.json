@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "build:tsc-watch": "tsc --project tsconfig.build.json --watch",
-    "build:auto-index": "barrelsby -d src --delete",
+    "build:auto-index": "node .scripts/generate-barrels.js",
     "build:auto-index:watch:onchange": "onchange 'src/**/*.ts' -- npm run build:auto-index",
     "build:auto-index:watch": "nodemon --ignore 'src/index.ts' --watch src --ext ts --exec \"npm run build:auto-index\"",
     "build:watch": "npm-run-all -p build:tsc-watch build:auto-index",

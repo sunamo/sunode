@@ -1,16 +1,16 @@
 {
   "directory": "./src",
   "exclude": [
-    "__tests__",
-    ".*\\.test\\.ts$",
-    ".*\\.test\\.tsx$",
-    ".*\\.spec\\.ts$",
-    ".*\\.spec\\.tsx$",
-    "setupTests.ts",
-    "index.ts",
-    ".*\\.js$",
-    ".*\\.d\\.ts$",
-    ".*\\.js\\.map$"
+    "__tests__/**/*",
+    "**/__tests__/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/setupTests.ts",
+    "**/*.js",
+    "**/*.d.ts",
+    "**/*.js.map"
   ],
   "delete": true,
   "location": "top",
