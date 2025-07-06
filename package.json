@@ -6,7 +6,7 @@
     "build": "pnpm clean && tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "release": "echo 'Before must be git state clean - without changes' && semantic-release && pnpm build && npm publish",
+    "release": "echo 'Before must be git state clean - without changes' && semantic-release --no-ci && pnpm build && npm publish",
     "release:patch": "pnpm version patch && pnpm build && npm publish",
     "release:minor": "pnpm version minor && pnpm build && npm publish",
     "release:major": "pnpm version major && pnpm build && npm publish",
