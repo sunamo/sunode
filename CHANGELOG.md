@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/sunamo/sunodejs/compare/v1.0.2...v1.0.3) (2025-07-06)
+
+
+### Bug Fixes
+
+* Build before publish ([24cfef7](https://github.com/sunamo/sunodejs/commit/24cfef7d5ddfd497c70f05481dc94051efd80ddb))
+* Build before publish ([735d796](https://github.com/sunamo/sunodejs/commit/735d796deea64ef0b7729d29d215acc99a7b0ebb))
+* Updated package.json scripts ([5d35c06](https://github.com/sunamo/sunodejs/commit/5d35c06c978174b8a484f7182774e7e082853ca7))
+
 ## [1.0.2](https://github.com/sunamo/sunodejs/compare/v1.0.1...v1.0.2) (2025-07-06)
 
 
