@@ -1,0 +1,17 @@
+src/
+__tests__/
+*.test.ts
+*.test.js
+coverage/
+.nyc_output/
+.eslintrc.js
+.prettierrc.json
+.github/
+jest.config.js
+tsconfig.json
+tsconfig.build.json
+pnpm-lock.yaml
+.gitignore
+.releaserc.json
+*.log
+node_modules/

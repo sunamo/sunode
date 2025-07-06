@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "pnpm clean && tsc --project tsconfig.build.json",
+    "build": "clear || cls && pnpm clean && tsc --project tsconfig.build.json",
     "clean": "rm -rf ./lib/",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "semantic-release": "semantic-release",
+    "release": "echo 'Before must be git state clean - without changes' && semantic-release && pnpm build && npm publish",
+    "release:patch": "pnpm version patch && pnpm build && npm publish",
+    "release:minor": "pnpm version minor && pnpm build && npm publish",
+    "release:major": "pnpm version major && pnpm build && npm publish",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
     "typecheck": "tsc --noEmit",
@@ -16,12 +19,15 @@
     "build:auto-index:watch:onchange": "onchange 'src/**/*.ts' -- npm run build:auto-index",
     "build:auto-index:watch": "nodemon --ignore 'src/index.ts' --watch src --ext ts --exec \"npm run build:auto-index\"",
     "build:watch": "npm-run-all -p build:tsc-watch build:auto-index",
-    "run-publish": "cross-env npm version patch -f && pnpm run build && npm publish",
     "onchange nefunguje a nevím proč, zkusím tedy nodemon": "",
     "test:onchange": "onchange './src/**/*.ts' -- echo 'Změna detekována!'",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/jest": "^30.0.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22",
@@ -38,14 +44,30 @@
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "prettier": "^2.2.1",
+    "semantic-release": "^24.2.0",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.2.1",
     "typescript": "^5"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "utilities",
+    "node"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "TypeScript utilities for Node.js applications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunamo/sunodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunamo/sunodejs/issues"
+  },
+  "homepage": "https://github.com/sunamo/sunodejs#readme",
+  "files": [
+    "lib/**/*"
+  ],
   "dependencies": {
     "jsdom": "^26.1.0",
     "nodemon": "^3.1.10",
