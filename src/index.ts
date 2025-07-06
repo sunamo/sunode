@@ -5,4 +5,6 @@ export * from './TF';
 export * from './ToDelete';
 export * from './Url';
 export * from './enums/AppFolders';
+export * from './enums/test/EnumToDelete';
+export * from './enums/test/test2/EnumToDelete2';
 export * from './types/ElectronLoggerNode';

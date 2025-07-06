@@ -1,6 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
+function getAllSubdirectoriesRecursive(srcDir, relativePath = '') {
+  let allSubdirs = [];
+  const currentDir = relativePath ? path.join(srcDir, relativePath) : srcDir;
+  const filesAndDirs = fs.readdirSync(currentDir, { withFileTypes: true });
+
+  for (const dirent of filesAndDirs) {
+    if (dirent.isDirectory() && dirent.name !== '__tests__') {
+      const relativeSubdirPath = relativePath ? [relativePath, dirent.name].join('/') : dirent.name;
+      allSubdirs.push(relativeSubdirPath); // Přidáme relativní cestu k podsložce
+
+      // Rekurzivně voláme pro vnořené podsložky
+      const nestedSubdirs = getAllSubdirectoriesRecursive(srcDir, relativeSubdirPath);
+      allSubdirs = allSubdirs.concat(nestedSubdirs);
+    }
+  }
+  return allSubdirs;
+}
+
 function generateBarrels() {
   const srcDir = path.join(__dirname, '..', 'src');
   const indexFile = path.join(srcDir, 'index.ts');
@@ -18,10 +36,7 @@ function generateBarrels() {
     .map((dirent) => dirent.name.replace('.ts', ''));
 
   // Get all subdirectories
-  const subdirs = fs
-    .readdirSync(srcDir, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory() && dirent.name !== '__tests__')
-    .map((dirent) => dirent.name);
+  const subdirs = getAllSubdirectoriesRecursive(srcDir);
 
   // Generate export statements - only named exports, no default exports
   const exports = [];
